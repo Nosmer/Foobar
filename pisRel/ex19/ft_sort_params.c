@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:12:27 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/04 14:07:58 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:28:06 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,32 @@ int		ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
+void	ft_swap(char **a, char **b)
+{
+	char *temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
 int		main(int argc, char **argv)
 {
 	int		i;
-	char	*tmp;
 
 	i = 1;
-	while (i < argc)
+	if (argc > 1)
 	{
-		if (ft_strcmp(argv[i], argv[i + 1]) > 0)
+		while (i < argc - 1)
 		{
-			tmp = argv[i];
-			argv[i] = argv[i + 1];
-			argv[i + 1] = tmp;
+			if (ft_strcmp(argv[i], argv[i + 1]) > 0)
+			{
+				ft_swap(&argv[i], &argv[i + 1]);
+				i = 1;
+			}
+			else
+				i++;
 		}
-		i++;
 	}
 	i = 1;
 	while (i < argc)
