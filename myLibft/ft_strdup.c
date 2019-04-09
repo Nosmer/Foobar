@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 11:38:33 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/09 16:17:24 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/09 14:45:25 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/09 16:21:56 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	size_t			i;
-	unsigned char	*src1;
-	unsigned char	*dst1;
-	unsigned char	uc;
+	int		i;
+	char	*dup;
 
-	src1 = (unsigned char *)src;
-	dst1 = (unsigned char *)dst;
-	uc = (unsigned char)c;
 	i = 0;
-	while (i < n)
+	if (!(dup = (char*)malloc(sizeof(*dup) * ft_strlen(s1) + 1)))
+		return (NULL);
+	while (s1[i])
 	{
-		dst1[i] = src1[i];
-		if (src1[i] == uc)
-			return (&dst[i + 1]);
+		dup[i] = s1[i];
 		i++;
 	}
-	return (NULL);
+	return (dup);
 }

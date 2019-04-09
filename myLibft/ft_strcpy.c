@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 11:38:33 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/09 16:17:24 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/09 15:02:32 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/09 16:21:32 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t			i;
-	unsigned char	*src1;
-	unsigned char	*dst1;
-	unsigned char	uc;
+	int i;
 
-	src1 = (unsigned char *)src;
-	dst1 = (unsigned char *)dst;
-	uc = (unsigned char)c;
 	i = 0;
-	while (i < n)
+	while (src[i])
 	{
-		dst1[i] = src1[i];
-		if (src1[i] == uc)
-			return (&dst[i + 1]);
+		dst[i] = src[i];
 		i++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (dst);
 }
