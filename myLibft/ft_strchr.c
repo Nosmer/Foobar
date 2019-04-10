@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:22:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/10 16:41:00 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/10 12:33:25 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/10 13:27:57 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	j;
+	int				i;
+	char			*us;
+	unsigned char	uc;
 
+	uc = (unsigned char)c;
+	us = (char *)s;
 	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0' && j < n)
+	while(us[i])
 	{
-		s1[i + j] = s2[j];
-		j++;
+		if (us[i] == uc)
+			return(&us[i]);
+		i++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	return (NULL);
 }

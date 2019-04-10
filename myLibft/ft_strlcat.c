@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:22:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/10 16:41:00 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/10 11:41:35 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/10 12:30:53 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
+	size_t	k;
 
 	i = 0;
 	j = 0;
-	while (s1[i] != '\0')
+	k = 0;
+	while (dst[i])
 		i++;
-	while (s2[j] != '\0' && j < n)
+	while (src[j] != '\0' && j < size)
 	{
-		s1[i + j] = s2[j];
+		dst[i + j] = src[j];
 		j++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	dst[i + j] = '\0';
+	while (dst[k] != '\0')
+		k++;
+	return (k + size);
 }

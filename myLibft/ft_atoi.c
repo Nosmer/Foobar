@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:22:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/10 16:41:00 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/10 16:19:14 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/10 16:40:31 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+int	atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
+	int		result;
+	int		sign;
 
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0' && j < n)
+	sign = 1;
+	result = 0;
+	while (*str == 32 || (*str > 8 && *str < 14) || *str == 43)
+		str++;
+	if (*str == '-')
 	{
-		s1[i + j] = s2[j];
-		j++;
+		sign = -1;
+		str++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	while (*str >= '0' && *str <= '0')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }

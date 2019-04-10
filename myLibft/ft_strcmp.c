@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:22:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/10 16:41:00 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/10 15:22:56 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/10 15:32:46 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
-	size_t	j;
+	char	*one;
+	char	*two;
 
+	one = (char *)s1;
+	two = (char *)s2;
 	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0' && j < n)
+	while (one[i])
 	{
-		s1[i + j] = s2[j];
-		j++;
+		if (two[i] == '\0')
+			return (1);
+		if (one[i] < two[i])
+			return (-1);
+		if (one[i] > two[i])
+			return (1);
+		i++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	if (two[i] != '\0')
+		return (-1);
+	return (0);
 }
