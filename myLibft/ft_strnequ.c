@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 12:08:05 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/11 11:33:30 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/11 15:43:08 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/11 15:57:06 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*ps;
-	unsigned char	uc;
+	size_t	i;
 
-	ps = (unsigned char *)s;
-	uc = (unsigned char)c;
 	i = 0;
-	while (i < n)
+	if (ft_strlen(s1) != ft_strlen(s2))
+		return (0);
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
 	{
-		if (ps[i] == uc)
-			return (&ps[i]);
+		if (s1[i] != s2[i])
+			return (0);
 		i++;
 	}
-	return (NULL);
+	return (1);
 }

@@ -6,11 +6,11 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:38:33 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/09 16:17:24 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/11 11:32:57 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {

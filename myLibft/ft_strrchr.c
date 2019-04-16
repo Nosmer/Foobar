@@ -6,26 +6,21 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 13:07:50 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/10 13:47:30 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:12:28 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t			i;
-	char			*us;
-	unsigned char	uc;
+	size_t	i;
 
-	uc = (unsigned char)c;
-	us = (char *)s;
-	i = ft_strlen(us);
-	while (us[i])
+	i = ft_strlen(s);
+	while (i > 0)
 	{
-		if (us[i] == uc)
-			return (&us[i]);
+		if (s[i] == c)
+			return ((char *)&s[i]);
 		i--;
 	}
 	return (NULL);

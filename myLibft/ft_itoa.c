@@ -1,31 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:22:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/11 11:45:28 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/14 14:49:31 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/16 12:02:13 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+static	size_t	ft_length(int n)
 {
 	size_t	i;
-	size_t	j;
 
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
+	i = 1;
+	if (n < 0)
 		i++;
-	while (s2[j] != '\0' && j < n)
+	while (n /= 10)
+		i++;
+	return (i);
+}
+
+char			*ft_itoa(int n)
+{
+	char	*arr;
+	size_t	len;
+	size_t	nb;
+
+	nb = n;
+	len = ft_length(n);
+	if (!(arr = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	arr[len--] = '\0';
+	if (n == 0)
 	{
-		s1[i + j] = s2[j];
-		j++;
+		arr[0] = '0';
+		return (arr);
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	if (n < 0)
+	{
+		arr[0] = '-';
+		nb *= -1;
+	}
+	while (nb > 0)
+	{
+		arr[len--] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	return (arr);
 }

@@ -6,16 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 14:45:25 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/09 16:21:56 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:42:52 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
-	int		i;
+	size_t	i;
 	char	*dup;
 
 	i = 0;
@@ -26,5 +25,6 @@ char	*ft_strdup(const char *s1)
 		dup[i] = s1[i];
 		i++;
 	}
+	dup[i] = '\0';
 	return (dup);
 }

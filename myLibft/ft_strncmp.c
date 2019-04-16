@@ -6,13 +6,13 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:32:57 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/10 16:02:12 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/16 12:18:59 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-int	strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 	char	*one;
@@ -27,7 +27,7 @@ int	strncmp(const char *s1, const char *s2, size_t n)
 			return (1);
 		if (one[i] < two[i])
 			return (-1);
-		if(one[i] > two[i])
+		if (one[i] > two[i])
 			return (1);
 		i++;
 	}

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 12:08:05 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/11 11:33:30 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/14 11:36:42 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/15 15:38:18 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strtrim(char const *s)
 {
-	size_t			i;
-	unsigned char	*ps;
-	unsigned char	uc;
+	size_t start;
+	size_t len;
 
-	ps = (unsigned char *)s;
-	uc = (unsigned char)c;
-	i = 0;
-	while (i < n)
-	{
-		if (ps[i] == uc)
-			return (&ps[i]);
-		i++;
-	}
-	return (NULL);
+	start = 0;
+	len = ft_strlen(s);
+	if (*s == '\0')
+		return (ft_strdup(s));
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
+		len--;
+	return (ft_strsub(s, start, len));
 }
