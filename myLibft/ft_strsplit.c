@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 12:28:31 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/16 12:04:59 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/17 15:03:19 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static	size_t	ft_word_len(char const *s, char c)
 	len = 0;
 	while (s[i] == c)
 		i++;
-	while (s[i] != c && s[i] != '\0')
+	while (s[i] != c && s[i])
 	{
-		len++;
 		i++;
+		len++;
 	}
 	return (len);
 }
@@ -66,11 +66,11 @@ char			**ft_strsplit(char const *s, char c)
 	size_t	len;
 
 	i = 0;
-	j = -1;
+	j = 0;
 	len = ft_len_delim(s, c);
-	if (!(arr = (char **)malloc(sizeof(char *) * len + 1)))
+	if (!(arr = (char **)malloc(sizeof(char *) * (len + 1))))
 		return (NULL);
-	while (++j < len)
+	while (j < len)
 	{
 		while (s[i] == c)
 			i++;
@@ -81,6 +81,7 @@ char			**ft_strsplit(char const *s, char c)
 		}
 		while (s[i] != c)
 			i++;
+		j++;
 	}
 	arr[i] = "\0";
 	return (arr);
