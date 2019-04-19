@@ -6,7 +6,7 @@
 #    By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:04:29 by bconsuel          #+#    #+#              #
-#    Updated: 2019/04/17 15:20:59 by bconsuel         ###   ########.fr        #
+#    Updated: 2019/04/19 14:48:21 by bconsuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -29,10 +29,10 @@ $(NAME): $(SRC)
 	gcc -c -Wall -Wextra -Werror $^
 	ar rc $@ $(SRC_O)
 
-clean: $(SRC_O)
+clean:
 	rm -f $(SRC_O)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

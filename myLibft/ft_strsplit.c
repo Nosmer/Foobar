@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 12:28:31 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/17 15:03:19 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/19 15:59:25 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ static	int		ft_len_delim(char const *s, char c)
 	len = 0;
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i] != '\0')
 			len++;
-		i++;
+		while (s[i] != c && s[i] != '\0')
+			i++;
 	}
 	return (len);
 }
@@ -45,9 +48,9 @@ static	size_t	ft_word_len(char const *s, char c)
 	return (len);
 }
 
-static	void	ft_free(char **arr, ssize_t i)
+static	void	ft_free(char **arr, size_t i)
 {
-	ssize_t	j;
+	size_t	j;
 
 	j = 0;
 	while (j < i)
@@ -61,7 +64,7 @@ static	void	ft_free(char **arr, ssize_t i)
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**arr;
-	ssize_t	i;
+	size_t	i;
 	size_t	j;
 	size_t	len;
 
@@ -70,19 +73,19 @@ char			**ft_strsplit(char const *s, char c)
 	len = ft_len_delim(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * (len + 1))))
 		return (NULL);
-	while (j < len)
+	while (i < len)
 	{
-		while (s[i] == c)
-			i++;
-		if (!(arr[j] = ft_strsub(s, i, ft_word_len(&s[j], c))))
+		while (s[j] == c)
+			j++;
+		if (!(arr[i] = ft_strsub(s, j, ft_word_len(&s[j], c))))
 		{
-			ft_free(arr, j);
+			ft_free(arr, i);
 			return (NULL);
 		}
-		while (s[i] != c)
-			i++;
-		j++;
+		while (s[j] != c)
+			j++;
+		i++;
 	}
-	arr[i] = "\0";
+	arr[i] = NULL;
 	return (arr);
 }
