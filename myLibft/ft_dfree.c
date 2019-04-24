@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_dfree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 15:43:08 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/23 16:49:43 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/24 12:21:23 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/24 12:45:59 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+void	ft_dfree(char **arr)
 {
 	size_t	i;
 
 	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	while(arr[i])
 	{
-		if (s1[i] != s2[i])
-			return (0);
+		free(arr[i]);
 		i++;
 	}
-	return (1);
+	free(arr);
 }

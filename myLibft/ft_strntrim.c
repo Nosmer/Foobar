@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strntrim.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 15:43:08 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/23 16:49:43 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/24 13:27:24 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/24 13:33:18 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+char	*ft_strntrim(char const *s, int c)
 {
-	size_t	i;
+	size_t	start;
+	size_t	len;
 
-	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	if (!s)
+		return (NULL);
+	if (*s == '\0')
+		return (ft_strdup(s));
+	start = 0;
+	len = ft_strlen(s);
+	while (s[start] == (unsigned char)c)
+		start++;
+	if (s[start] == '\0')
+		return (ft_strdup(s + start));
+	while (s[len] == (unsigned char)c)
+		len--;
+	return (ft_strsub(s, start, len - start + 1));
 }
