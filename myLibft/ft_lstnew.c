@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 16:19:14 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/30 12:02:38 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/29 12:14:17 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/29 13:00:40 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	long		result;
-	int			sign;
+	t_list	*elem;
 
-	sign = 1;
-	result = 0;
-	while (*str == 32 || (*str > 8 && *str < 14))
-		str++;
-	if (*str == '-')
+	if (!(elem = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	if (content == NULL)
 	{
-		sign = -1;
+		elem->content = NULL;
+		elem->content_size = 0;
 	}
-	if (*str == '+' || *str == '-')
-		str++;
-	while (*str >= '0' && *str <= '9')
+	else
 	{
-		if ((result = result * 10 + *str - '0') < 0)
-			return (sign == 1 ? -1 : 0);
-		str++;
+		if (!(elem->content = malloc(content_size)))
+			return (NULL);
+		elem->content_size = content_size;
+		ft_memcpy(elem->content, content, content_size);
 	}
-	return (result * sign);
+	elem->next = NULL;
+	return (elem);
 }

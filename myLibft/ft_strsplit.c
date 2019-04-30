@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 12:28:31 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/24 13:35:15 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/29 14:00:00 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static	size_t	ft_word_len(char const *s, char c)
 	return (len);
 }
 
-/*static	void	ft_free(char **arr, size_t i)
+static	void	ft_free(char **arr, size_t i)
 {
 	size_t	j;
 
@@ -62,7 +62,7 @@ static	size_t	ft_word_len(char const *s, char c)
 		j++;
 	}
 	free(arr);
-}*/
+}
 
 char			**ft_strsplit(char const *s, char c)
 {
@@ -82,7 +82,7 @@ char			**ft_strsplit(char const *s, char c)
 			j++;
 		if (!(arr[i] = ft_strsub(s, j, ft_word_len(&s[j], c))))
 		{
-			ft_dfree(arr);
+			ft_free(arr, i);
 			return (NULL);
 		}
 		while (s[j] != c)

@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 16:19:14 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/30 12:02:38 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/04/29 14:13:21 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/04/29 14:18:33 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	long		result;
-	int			sign;
-
-	sign = 1;
-	result = 0;
-	while (*str == 32 || (*str > 8 && *str < 14))
-		str++;
-	if (*str == '-')
+	while (lst)
 	{
-		sign = -1;
+		f(lst);
+		lst = lst->next;
 	}
-	if (*str == '+' || *str == '-')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		if ((result = result * 10 + *str - '0') < 0)
-			return (sign == 1 ? -1 : 0);
-		str++;
-	}
-	return (result * sign);
 }

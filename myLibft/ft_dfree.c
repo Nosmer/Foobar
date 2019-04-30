@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:21:23 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/24 12:45:59 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/30 11:45:29 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	ft_dfree(char **arr)
 {
-	size_t	i;
-
-	i = 0;
-	while(arr[i])
+	while (*arr)
 	{
-		free(arr[i]);
-		i++;
+		free(*arr);
+		arr++;
 	}
 	free(arr);
 }
