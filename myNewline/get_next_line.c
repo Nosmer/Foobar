@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 10:59:33 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/05/07 16:44:31 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:30:16 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,10 @@ int		next_line(char **c, char **line, int fd)
 	len = 0;
 	while (c[fd][len] != '\n' && c[fd][len] != '\0')
 		len++;
-	if (c[fd][len] == '\n')
-	{
-		*line = ft_strsub(c[fd], 0, len);
-		tmp = ft_strdup(c[fd] + len + 1);
-		free(c[fd]);
-		c[fd] = tmp;
-		if (c[fd][0] == '\0')
-			ft_strdel(&c[fd]);
-	}
-	else if (c[fd][len] == '\0')
-	{
-		*line = ft_strdup(c[fd]);
-		free(c[fd]);
-	}
+	*line = ft_strsub(c[fd], 0, len);
+	tmp = ft_strdup(c[fd] + (len + 1));
+	free(c[fd]);
+	c[fd] = tmp;
 	return (1);
 }
 
@@ -44,7 +34,7 @@ int		get_next_line(const int fd, char **line)
 	char		buf[BUFF_SIZE + 1];
 	char		*tmp;
 
-	if (fd < 0 || !line)
+	if (fd < 0 || line == NULL)
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
