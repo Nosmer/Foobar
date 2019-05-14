@@ -6,7 +6,7 @@
 #    By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:04:29 by bconsuel          #+#    #+#              #
-#    Updated: 2019/04/30 11:47:37 by bconsuel         ###   ########.fr        #
+#    Updated: 2019/05/14 14:58:00 by bconsuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -27,13 +27,13 @@ SRC_O = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(SRC)
-	gcc -c -Wall -Wextra -Werror $^
-	ar rc $@ $(SRC_O)
+	@gcc -c -Wall -Wextra -Werror $^
+	@ar rc $@ $(SRC_O)
 
 clean:
-	rm -f $(SRC_O)
+	@rm -f $(SRC_O)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

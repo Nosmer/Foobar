@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:55:31 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/05/08 13:12:42 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/05/14 14:10:58 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strnew(size_t size)
 {
 	char	*arr;
 
-	if (size + 1 == 0)
-		return (NULL);
 	if (!(arr = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
 	ft_memset(arr, '\0', size + 1);
