@@ -6,37 +6,47 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 13:27:01 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/05/27 15:12:36 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/05 14:19:42 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static	int	valid_shape(char *buf, int t)
+/*
+ * Returns the number of connections around # character
+ * in buf. First checks previous character, then next one,
+ * then the one above, then the one below.
+ */
+static	int	valid_shape(char *buf)
 {
 	int	val;
+	int	i;
 
 	val = 0;
+	i = 0;
 	if (t == 19)
 		return (val);
-	while (buf[t])
+	while (buf[i])
 	{
-		if (buf[t] == '#')
+		if (buf[i] == '#')
 		{
-			if (t > 0 && buf[t - 1] == '#')
+			if (i > 0 && buf[i - 1] == '#')
 				val++;
-			if (t < 19 && buf[t + 1] == '#')
+			if (i < 19 && buf[i + 1] == '#')
 				val++;
-			if (t >= 5 && buf[t - 5] == '#')
+			if (i >= 5 && buf[i - 5] == '#')
 				val++;
-			if (t <= 14 && buf[t + 5] == '#')
+			if (i <= 14 && buf[i + 5] == '#')
 				val++;
 		}
-		t++;
+		i++;
 	}
 	return (val);
 }
-
+/*
+ * Conveniently checks if our passed string has the correct
+ * characters and returns 1 if they are placed correctly,
+ * 0 otherwise.
+ */
 static	int	valid_char(char c, int i)
 {
 	if (c == '#' || c == '.' || (c == '\n'
@@ -44,12 +54,16 @@ static	int	valid_char(char c, int i)
 		return (1);
 	return (0);
 }
-
+/*
+ * Checks the validity of our tetrimino. valid_char is for convenient
+ * check of characters. Val stores the number of connections between
+ * # characters, that we count in valid_shape func. Returns 1 if
+ * buf is valid, calls ft_puterr(0) otherwise.
+ */
 static	int	valid_buf(char *buf)
 {
 	int	i;
 	int	tet;
-	int	first_t;
 	int	val;
 
 	i = 0;
@@ -58,22 +72,23 @@ static	int	valid_buf(char *buf)
 	while (buf[i] && valid_char(buf[i], i))
 	{
 		if (buf[i] == '#')
-		{
 			tet++;
-			if (tet == 1)
-				first_t = i;
-		}
 		i++;
 	}
-	val = valid_shape(buf, first_t);
+	val = valid_shape(buf);
 	if (tet == 4 && (val == 6 || val == 8))
 		return (1);
 	else
 		ft_puterr(0);
 	return (0);
 }
-
-int			ft_validate(t_board board, const char *file)
+/*
+ * Reads our file in increments of 22 and passes them into
+ * valid_buf() func. If passed buf(fer) is correct, we call
+ * ft_store() func to put our valid block on the board, otherwise
+ * calls ft_puterr(0).
+ */
+int			ft_validate(t_board *board, const char *file)
 {
 	int		fd;
 	int		ret;

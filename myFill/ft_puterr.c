@@ -6,12 +6,16 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 13:40:06 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/05/25 13:43:23 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:28:41 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
+/*
+ * Convenienlty exits the program is we encounter an error.
+ * You should pass 1 only to check the correct amount of input,
+ * 0 for everything else.
+ */
 void	ft_puterr(int c)
 {
 	if (c == 0)
