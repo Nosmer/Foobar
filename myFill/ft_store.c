@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 14:27:46 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/05 15:13:28 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/11 12:42:24 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * and counts the number of tetriminos in it.
  * Easy.
  */
-static void		push_new(t_board *board, t_tet *new)
+void		push_new(t_board *board, t_tet *new)
 {
 	t_tet	*tet;
 
@@ -35,7 +35,7 @@ static void		push_new(t_board *board, t_tet *new)
 }
 
 /*
- * Creates a new string to place in map[i]
+ * Creates a new string to place in map[i] of our tet
  * and replaces all # with chatacter passed to char l.
  */
 static char		*re_piece(char const *s, unsigned int start,
@@ -103,9 +103,8 @@ void			ft_store(t_board *board, char *buf)
 	t_tet		*new;
 	t_coord		pts;
 	int			i;
-	static char	c;
+	static char	c = 'A';
 
-	c = 'A';
 	i = 0;
 	if (!(new = ft_memalloc(sizeof(t_tet))))
 		ft_puterr(0);
@@ -114,7 +113,7 @@ void			ft_store(t_board *board, char *buf)
 	new->next = NULL;
 	new->width = pts.right - pts.left + 1;
 	new->height = pts.bottom - pts.top + 1;
-	if (!(new->map = (char**)malloc(new->height * sizeof(char *))))
+	if (!(new->map = (char **)malloc(new->height * sizeof(char *))))
 		ft_puterr(0);
 	while (i < new->height)
 	{

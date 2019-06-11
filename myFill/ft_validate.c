@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 13:27:01 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/05 14:19:42 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/11 12:14:38 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static	int	valid_shape(char *buf)
 
 	val = 0;
 	i = 0;
-	if (t == 19)
-		return (val);
 	while (buf[i])
 	{
 		if (buf[i] == '#')
@@ -68,7 +66,6 @@ static	int	valid_buf(char *buf)
 
 	i = 0;
 	tet = 0;
-	first_t = 0;
 	while (buf[i] && valid_char(buf[i], i))
 	{
 		if (buf[i] == '#')

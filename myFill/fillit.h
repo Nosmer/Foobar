@@ -6,14 +6,16 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 15:43:16 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/05 14:33:54 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/11 12:17:16 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 # include "./libft/libft.h"
+# define B_MAP_POS board->map[tet->x + i][tet->y + j]
 
+#include <stdio.h>
 /*
  * Throwaway struct to store coordinates of a first # of
  * a tetrimino. Is used in ft_store get_coords function.
@@ -61,5 +63,6 @@ int					ft_validate(t_board *board, const char *file);
 void				ft_puterr(int c);
 void				ft_store(t_board *board, char *buf);
 void				ft_solve(t_board *board);
+void				ft_display(t_board *board);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 13:27:53 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/05 14:12:26 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/11 12:14:19 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		ft_sqrt(int x)
 	int		res;
 
 	res = 1;
-	while (res * res < nb)
+	while (res * res < x)
 		res++;
 	return (res);
 }
@@ -38,7 +38,7 @@ static void		set_board_map(t_board *board, int s)
 	i = 0;
 	if(!(board->map = (char **)malloc(s * sizeof(char *))))
 		ft_puterr(0);
-	while (i < size)
+	while (i < s)
 	{
 		if (!(board->map[i] = (char *)malloc(s * sizeof(char))))
 			ft_puterr(0);
@@ -55,7 +55,7 @@ static void		set_board_map(t_board *board, int s)
  */
 int				ft_init(t_board *board, char *file)
 {
-	board->tet = NULL;
+	board->tets = NULL;
 	board->nb_tet = 0;
 	board->map = NULL;
 	if (ft_validate(board, file))
