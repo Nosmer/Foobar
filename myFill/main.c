@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 14:21:15 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/11 12:12:20 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/12 12:49:48 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_free(t_board *board)
  * Displays entire map of the board. Since our board
  * is equilateral, we can use board->size for both dimensions.
  */
-void	ft_display(t_board *board)
+static void	ft_display(t_board *board)
 {
 	int		i;
 	int		j;
@@ -72,14 +72,10 @@ int			main(int argc, char **argv)
 	}
 	else
 	{
-printf("initializing...\n");
 		if (ft_init(&board, argv[1]))
 		{
-printf("solving...\n");
 			ft_solve(&board);
-printf("displaying...\n");
 			ft_display(&board);
-printf("finalizing...\n");
 			ft_free(&board);
 		}
 		else

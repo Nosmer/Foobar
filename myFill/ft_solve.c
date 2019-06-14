@@ -6,25 +6,26 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 14:22:20 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/11 12:57:04 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/14 12:21:24 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
- * Deletes a tet from the board.
+ * Deletes a tet from the board. wid and hei represent
+ * last position to delete.
  */
-static int	map_del(t_board *board, t_tet *tet, int hei, int wid)
+static int	map_del(t_board *board, t_tet *tet)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i <= wid)
+	while (i <= board->size)
 	{
 		j = 0;
-		while (j <= hei)
+		while (j <= board->size)
 		{
 			if (B_MAP_POS == tet->letter)
 				B_MAP_POS = '.';
@@ -55,24 +56,24 @@ static int	map_add(t_board *board, t_tet *tet)
 	while (flag && i < tet->height)
 	{
 		j = 0;
-		while(flag && j < tet->width)
+		while (flag && j < tet->width)
 		{
-			if (B_MAP_POS != '.' && tet->map[i][j] != '.')
+			if (B_MAP_POS != '.' && T_MAP_POS != '.')
 				flag = 0;
-			else if(B_MAP_POS == '.')
-				B_MAP_POS = tet->map[i][j];
+			else if (B_MAP_POS == '.')
+				B_MAP_POS = T_MAP_POS;
 			j = (flag)? j + 1 : j;
 		}
 		i = (flag)? i + 1 : i;
 	}
 	if (flag)
 		return (1);
-	return (map_del(board, tet, i, j));
+	return (map_del(board, tet));
 }
 
 /*
  * First this func tries to put a tetrimino on x/y position,
- * if it fails - delete tet from the map and tries again
+ * if it fails - delete tet from the map and triy again
  * with the next  x/y position. Returns 1 if the answer
  * is found (for recursion) or it ran out of tetriminoes
  * (which means we found our solution).
@@ -92,7 +93,7 @@ static int	solving(t_board *board, t_tet *tet)
 				if (solving(board, tet->next))
 					return (1);
 				else
-					map_del(board, tet, tet->width - 1, tet->height - 1);
+					map_del(board, tet);
 			}
 			tet->y++;
 		}

@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 15:43:16 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/11 12:17:16 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/14 12:13:20 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILLIT_H
 # include "./libft/libft.h"
 # define B_MAP_POS board->map[tet->x + i][tet->y + j]
+# define T_MAP_POS tet->map[i][j]
 
 #include <stdio.h>
 /*
@@ -63,6 +64,5 @@ int					ft_validate(t_board *board, const char *file);
 void				ft_puterr(int c);
 void				ft_store(t_board *board, char *buf);
 void				ft_solve(t_board *board);
-void				ft_display(t_board *board);
 
 #endif
