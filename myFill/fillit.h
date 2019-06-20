@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 15:43:16 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/18 13:47:59 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/19 12:16:15 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct		s_coord
 }					t_coord;
 
 /*
-**  Linked list element, stores a map of a tetrimino, its
+** Linked list element, stores a map of a tetrimino, its
 ** allocated letter, general size and x/y position of the
 ** first element of a tetrimino on our board.
 */
