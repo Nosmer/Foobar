@@ -6,32 +6,11 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 14:21:15 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/19 12:14:42 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/26 12:51:52 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*
-** Clears the map field of our board, since it is the only place
-** where memory is allocated.
-*/
-
-static void	ft_free(t_board *board)
-{
-	int i;
-
-	i = 0;
-	if (board->map)
-	{
-		while (i < 4 * board->nb_tet)
-		{
-			free(board->map);
-			i++;
-			board->map = NULL;
-		}
-	}
-}
 
 /*
 ** Displays entire map of the board. Since our board
@@ -69,7 +48,7 @@ int			main(int argc, char **argv)
 {
 	t_board	board;
 
-	if (argc > 2)
+	if (argc != 2)
 	{
 		ft_puterr(1);
 	}

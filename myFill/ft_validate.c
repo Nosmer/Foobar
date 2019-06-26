@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 13:27:01 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/06/24 13:54:56 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/06/26 15:06:17 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,11 @@ int			ft_validate(t_board *board, const char *file)
 	int		fd;
 	int		ret;
 	int		last;
+	int		count;
 	char	buf[22];
 
 	last = 0;
+	count = 0;
 	if (!(fd = open(file, O_RDONLY)))
 		ft_puterr(0);
 	while ((ret = read(fd, buf, 21)))
@@ -110,11 +112,14 @@ int			ft_validate(t_board *board, const char *file)
 		last = ret;
 		buf[ret] = '\0';
 		if (ret >= 20 && valid_buf(buf))
+		{
 			ft_store(board, buf);
+			count++;
+		}
 		else
 			ft_puterr(0);
 	}
-	if (ret <= 0 && (last == 21 || !last))
+	if ((ret <= 0 && (last == 21 || !last)) || count > 26)
 		ft_puterr(0);
 	return (1);
 }
