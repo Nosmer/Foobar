@@ -6,39 +6,30 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 12:49:03 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/07/15 13:38:12 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/07/19 16:36:49 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fprintf.h"
-#include <stdio.h>
 
-int		ft_printf(const char * restrict format, ...)
+int		ft_printf(char *format, ...)
 {
 	va_list ap;
+	size_t	count;
 
+	count = 0;
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format != '%')
-			ft_putchar(*format);
-		else
+		if (*format == '%')
 		{
 			format++;
-			parse_format(*format);
+			ft_parse_format(&(format));
 		}
+		else
+			ft_putchar(*format);
 		format++;
 	}
 	va_end(ap);
-	return (0);
-}
-
-int main()
-{
-	int		a;
-
-	a = 5;
-	ft_printf("Foo%dBar\n", a);
-	printf("Foo%dBar\n", a);
-	return (0);
+	return (count);
 }
