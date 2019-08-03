@@ -1,38 +1,42 @@
 #include "fprintf.h"
 #include <stdio.h>
 
-int		ft_test(const char * format, ...)
+void	get_hex(size_t s)
 {
-	va_list	ap;
+	char	hex[100];
+	int		i;
+	int		j;
+	int		t;
 
-	va_start(ap, format);
-	while (*format)
+	i = 0;
+	t = 0;
+	while (s != 0)
 	{
-		if (ft_isdigit(*format))
-			ft_putchar('y');
+		t = s % 16;
+		if (t < 10)
+			hex[i++] = t + 48;
 		else
-			ft_putchar('n');
-//		printf("Pointer: %p\n", format);
-//		printf("String: %s\n", format);
-		format++;
+			hex[i++] = t + 87; /* 55 */
+		s = s / 16;
 	}
-	return (0);
+	j = i - 1;
+	while (j >= 0)
+	{
+		ft_putchar(hex[j]);
+		j--;
+	}
+	ft_putchar('\n');
 }
 
 int		main()
 {
-  	char *s = "FooBar";
-/*
-	while (*s)
-	{
-		if (ft_isdigit(*s))
-			ft_putchar(*s);
-		else
-			ft_putchar('0');
-		s++;
-	}
-*/
-	ft_printf("Foo%0#33.55sBar\n");
-//	ft_test("Foo5Bar\n");
+	char	*s = "FooBar";
+	int		i = 0;
+	int		j = 0;
+	int		test = 345;
+//	ft_printf("Foo%-3.3sBar\n", "foobar");
+	i = printf("%ld\n", test);
+//	j = ft_printf("%3x\n", 3);
+	printf("i: %d, j: %d\n", i, j);
 	return (0);
 }

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/08 12:49:03 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/07/24 14:31:09 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/07/24 13:36:21 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/08/03 13:56:06 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fprintf.h"
 
-int		ft_printf(char *format, ...)
+int			ft_percent(t_listf *lst)
 {
-	va_list ap;
-	size_t	count;
+	int		res;
 
-	count = 0;
-	va_start(ap, format);
-	while (*format)
+	res = 0;
+	if (ZERO == '0')
+		PRNT = ZERO;
+	while (MINUS != '-' && (lst->wid)-- > 1)
 	{
-		if (*format == '%')
-		{
-			format++;
-			count += ft_parse_format(&(format), ap);
-		}
-		else
-			count += ft_print(*format);
-		format++;
+		res += ft_print(PRNT);
 	}
-	va_end(ap);
-	return (count);
+	res += ft_print('%');
+	while (MINUS == '-' && (lst->wid)-- > 1)
+	{
+		res += ft_print(' ');
+	}
+	return (res);
 }
