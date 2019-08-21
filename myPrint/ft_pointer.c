@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 12:28:23 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/03 13:57:10 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/21 15:41:06 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	int	get_hex(t_listf *lst, size_t s)
 	j = i;
 	while (j >= 0)
 		ft_putchar(hex[j--]);
-	return (i);
+	return (i + 1);
 }
 
 int			ft_pointer(t_listf *lst, void *p)

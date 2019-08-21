@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 12:25:32 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/02 15:46:52 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/21 15:33:01 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_handle_type(t_listf *lst, va_list ap)
 
 	len = 0;
 	if (lst->type == '%')
-		len = ft_percent(lst);
+		len = ft_char(lst, '%');
 	else if (lst->type == 'c')
 		len = ft_char(lst, va_arg(ap, int));
 	else if (lst->type == 's')
@@ -32,14 +32,16 @@ int		ft_handle_type(t_listf *lst, va_list ap)
 		len = ft_pointer(lst, va_arg(ap, void *));
 	else if (lst->type == 'd' || lst->type == 'i')
 		len = ft_int(lst, va_arg(ap, void *));
-/*	else if (lst->type == 'o')
-		len = ft_uint(lst);
+	else if (lst->type == 'o')
+		len = ft_uint(lst, va_arg(ap, void*));
 	else if (lst->type == 'u')
-		len = ft_duint(lst);
+		len = ft_duint(lst, va_arg(ap, void *));
 	else if (lst->type == 'x' || lst->type == 'X')
-		len = ft_hexuint(lst);
-	else if (lst->type == 'f')
-		len = ft_double(lst);
-*/
+		len = ft_hexuint(lst, va_arg(ap, void *));
+	else if (lst->type == 'f' && !(lst->lll))
+		len = ft_double_f(lst, va_arg(ap, double));
+	else if (lst->type == 'f' && lst->lll)
+		len = ft_double_lf(lst, va_arg(ap, long double));
+	ft_strdel(&(lst->flag));
 	return (len);
 }

@@ -6,13 +6,13 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:27:42 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/03 15:30:25 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/21 15:46:59 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fprintf.h"
 
-static int ft_putnbr_mod(t_listf *lst, intmax_t *di)
+static int ft_putnbr_mod(t_listf *lst, intmax_t di)
 {
 	int			res;
 
@@ -25,7 +25,7 @@ static int ft_putnbr_mod(t_listf *lst, intmax_t *di)
 	return (res);
 }
 
-static int	ft_put_di(t_listf *lst, intmax_t *di)
+static int	ft_put_di(t_listf *lst, intmax_t di)
 {
 	int		res;
 
@@ -44,10 +44,12 @@ static int	ft_put_di(t_listf *lst, intmax_t *di)
 	}
 	else if (SPACE == ' ')
 	{
-		if (*di != '-')
+		if (di != '-')
 			res += ft_print(' ');
 		res += ft_putnbr_mod(lst, di);
 	}
+	else
+		res += ft_putnbr_mod(lst, di);
 	while (MINUS == '-' && (lst->wid)-- > 1)
 		res += ft_print(' ');
 	return (res);

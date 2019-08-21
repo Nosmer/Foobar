@@ -35,8 +35,8 @@ int		main()
 	int		j = 0;
 	int		test = 345;
 //	ft_printf("Foo%-3.3sBar\n", "foobar");
-	i = printf("%ld\n", test);
-//	j = ft_printf("%3x\n", 3);
+	i = printf("%d\n", test);
+	j = ft_printf("%d\n", test);
 	printf("i: %d, j: %d\n", i, j);
 	return (0);
 }
