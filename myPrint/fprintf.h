@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 13:26:57 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/21 14:52:59 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:29:39 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int				ft_char(t_listf *lst, int c);
 int				ft_string(t_listf *lst, void *s);
 int				ft_pointer(t_listf *lst, void *p);
 int				ft_int(t_listf *lst, void *di);
-int				ft_uint(t_listf *lst, void *oct);
-int				ft_duint(t_listf *lst, void *du);
+int				ft_uint(t_listf *lst, void *u);
+int				ft_int_oct(t_listf *lst, void *oct);
 int				ft_hexuint(t_listf *lst, void *hex);
 int				ft_double_f(t_listf *lst, double f);
 int				ft_double_lf(t_listf *lst, long double f);

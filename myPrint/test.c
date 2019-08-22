@@ -33,10 +33,11 @@ int		main()
 	char	*s = "FooBar";
 	int		i = 0;
 	int		j = 0;
-	int		test = 345;
+	int		t = 345678;
+	char	c = 'a';
 //	ft_printf("Foo%-3.3sBar\n", "foobar");
-	i = printf("%d\n", test);
-	j = ft_printf("%d\n", test);
+	i = printf("%9o\n", t);
+	j = ft_printf("%9o\n", t);
 	printf("i: %d, j: %d\n", i, j);
 	return (0);
 }

@@ -6,12 +6,11 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 12:37:46 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/03 13:55:34 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/22 13:40:20 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fprintf.h"
-#include <stdio.h>
 
 static int	ft_isflag(int c)
 {
@@ -105,7 +104,7 @@ int			ft_parse_format(char **format, va_list ap)
 	{
 		if (ft_isflag(**format))
 			ft_put_flag(format, &lst);
-		if (ft_isdigit(**format) && lst.wid == 0 && lst.prec == 0)
+		if (ft_isdigit(**format) && lst.wid == -1 && lst.prec == -1)
 			lst.wid = ft_get_num(format);
 		if (**format == '.' && (*format)++)
 			lst.prec = ft_get_num(format);

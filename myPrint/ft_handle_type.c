@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 12:25:32 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/21 15:33:01 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/22 12:26:06 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int		ft_handle_type(t_listf *lst, va_list ap)
 	else if (lst->type == 'd' || lst->type == 'i')
 		len = ft_int(lst, va_arg(ap, void *));
 	else if (lst->type == 'o')
-		len = ft_uint(lst, va_arg(ap, void*));
+		len = ft_int_oct(lst, va_arg(ap, void*));
 	else if (lst->type == 'u')
-		len = ft_duint(lst, va_arg(ap, void *));
+		len = ft_uint(lst, va_arg(ap, void *));
 	else if (lst->type == 'x' || lst->type == 'X')
 		len = ft_hexuint(lst, va_arg(ap, void *));
 	else if (lst->type == 'f' && !(lst->lll))
