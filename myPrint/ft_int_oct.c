@@ -6,12 +6,11 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 11:34:44 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/22 15:18:04 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/23 11:43:00 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fprintf.h"
-#include <stdio.h>
 
 static void	ft_prnt_oct(int *octal, int i)
 {

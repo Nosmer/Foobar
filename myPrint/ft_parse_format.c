@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 12:37:46 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/22 13:40:20 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/22 15:51:58 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int			ft_parse_format(char **format, va_list ap)
 	ft_init(&lst);
 	while (!ft_istype(**format))
 	{
-		if (ft_isflag(**format))
+		if (ft_isflag(**format) && lst.wid == -1 && lst.prec == -1)
 			ft_put_flag(format, &lst);
 		if (ft_isdigit(**format) && lst.wid == -1 && lst.prec == -1)
 			lst.wid = ft_get_num(format);
