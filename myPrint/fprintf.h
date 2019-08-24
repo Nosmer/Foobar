@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 13:26:57 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/23 14:52:01 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/24 11:59:18 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ typedef	struct	s_listf
 	int			lll;
 	char		type;
 }				t_listf;
-
-typedef struct	s_fdbl
-{
-	void			*content;
-	size_t			size;
-	struct s_fdbl	*next;
-}				t_fdbl;
 
 int				ft_printf(char *format, ...);
 int				ft_parse_format(char **format, va_list ap);

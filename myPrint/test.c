@@ -27,7 +27,7 @@ void	get_hex(size_t s)
 	}
 	ft_putchar('\n');
 }
-
+/*
 int		main()
 {
 	char	*s = "FooBar";
@@ -41,4 +41,4 @@ int		main()
 	j = ft_printf("%f\n", d);
 	printf("i: %d, j: %d\n", i, j);
 	return (0);
-}
+}*/
