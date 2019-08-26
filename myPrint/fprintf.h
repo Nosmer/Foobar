@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 13:26:57 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/24 11:59:18 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/26 12:57:36 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef	struct	s_listf
 	int			hh;
 	int			l;
 	int			ll;
-	int			lll;
+	int			ell;
 	char		type;
 }				t_listf;
 

@@ -6,23 +6,13 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 15:19:19 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/24 15:00:00 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/26 13:01:01 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fprintf.h"
-#include <stdio.h>
 
-static void	ft_lstprnt(t_list *head)
-{
-	while (head)
-	{
-		ft_putnbr((int)head->content);
-		head = head->next;
-	}
-}
-
-static int	ft_get_fdbl(t_listf *lst, t_list *head, double f)
+static int	ft_get_df(t_listf *lst, t_list *head, double f)
 {
 	int		res;
 	int		left;
@@ -59,7 +49,7 @@ int			ft_double_f(t_listf *lst, double f)
 	len = 0;
 	if (lst->prec == -1)
 		lst->prec = 6;
-	len += ft_get_fdbl(lst, &head ,f);
+	len += ft_get_df(lst, &head ,f);
 	lst->wid = lst->wid - len;
 	if (ZERO == '0')
 		PRNT = ZERO;

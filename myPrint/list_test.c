@@ -3,7 +3,7 @@
 
 typedef struct			s_lista
 {
-	int					content;
+	char				*content;
 	struct s_lista		*next;
 }						t_lista;
 
@@ -11,12 +11,12 @@ static void	prnt(t_lista *head)
 {
 	while(head)
 	{
-		ft_putnbr((int)head->content);
+		ft_putstr(head->content);
 		head = head->next;
 	}
 }
 
-static void	add(t_lista **head, int content)
+static void	add(t_lista **head, char *content)
 {
 	t_lista	*new;
 	t_lista	*last;
@@ -47,13 +47,14 @@ int			main()
 	head = NULL;
 	left = (int)right;
 	right = right - (double)left;
-	add(&head, left);
+	add(&head, ft_itoa(left));
+	add(&head, ".");
 	while (prec)
 	{
 		right *= 10;
 		left = (int)right;
 		right = right - (double)left;
-		add(&head, left);
+		add(&head, ft_itoa(left));
 		prec--;
 	}
 	prnt(head);
