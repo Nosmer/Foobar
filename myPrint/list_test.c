@@ -1,12 +1,6 @@
 #include "fprintf.h"
 #include <stdio.h>
 
-typedef struct			s_lista
-{
-	char				*content;
-	struct s_lista		*next;
-}						t_lista;
-
 static void	prnt(t_lista *head)
 {
 	while(head)
@@ -34,7 +28,7 @@ static void	add(t_lista **head, char *content)
 		last = last->next;
 	last->next = new;
 }
-
+/*
 int			main()
 {
 	t_lista	*head;
@@ -60,3 +54,4 @@ int			main()
 	prnt(head);
 	return (0);
 }
+*/

@@ -27,18 +27,18 @@ void	get_hex(size_t s)
 	}
 	ft_putchar('\n');
 }
-/*
+
 int		main()
 {
 	char	*s = "FooBar";
 	int		i = 0;
 	int		j = 0;
 	int		t = 345678;
-	double	d = 876.543;
+	double	d = 654.654;
 	char	c = 'a';
 //	ft_printf("Foo%-3.3sBar\n", "foobar");
-	i = printf("%f\n", d);
-	j = ft_printf("%f\n", d);
+	i = printf("pr: %f\n", d);
+	j = ft_printf("my: %f\n", d);
 	printf("i: %d, j: %d\n", i, j);
 	return (0);
-}*/
+}

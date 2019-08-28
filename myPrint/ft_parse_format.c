@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 12:37:46 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/22 15:51:58 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/28 12:04:49 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static	void	ft_get_hl(char **f, t_listf *lst)
 			lst->l = 1;
 	}
 	if (**f == 'L')
-		lst->lll = 1;
+		lst->ell = 1;
 }
 
 int				ft_get_num(char **f)
@@ -86,7 +86,7 @@ static	void	ft_init(t_listf *lst)
 	lst->hh = 0;
 	lst->l = 0;
 	lst->ll = 0;
-	lst->lll = 0;
+	lst->ell = 0;
 }
 
 /* Reads a string passed as parameter and writes down all
