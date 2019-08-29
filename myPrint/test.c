@@ -37,8 +37,8 @@ int		main()
 	double	d = 654.654;
 	char	c = 'a';
 //	ft_printf("Foo%-3.3sBar\n", "foobar");
-	i = printf("pr: %f\n", d);
-	j = ft_printf("my: %f\n", d);
+	i = printf("pr: %.17f\n", d);
+	j = ft_printf("my: %.17f\n", d);
 	printf("i: %d, j: %d\n", i, j);
 	return (0);
 }
