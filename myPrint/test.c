@@ -34,11 +34,11 @@ int		main()
 	int		i = 0;
 	int		j = 0;
 	int		t = 345678;
-	double	d = 654.654;
+	double	d = 456.654;
 	char	c = 'a';
 //	ft_printf("Foo%-3.3sBar\n", "foobar");
-	i = printf("pr: %.17f\n", d);
-	j = ft_printf("my: %.17f\n", d);
+	i = printf("pr: %f\n", d);
+	j = ft_printf("my: %f\n", d);
 	printf("i: %d, j: %d\n", i, j);
 	return (0);
 }

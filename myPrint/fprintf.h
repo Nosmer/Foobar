@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 13:26:57 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/29 15:58:11 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/30 13:55:06 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ void				ft_prnt_lst(t_lista *head);
 void				ft_free_lst(t_lista *head);
 void				ft_prnt_arr(char *arr, int len);
 int					ft_print(int c);
-char				*ft_itoa_mod(uintmax_t n);
 int					ft_pow(int b, int n);
 # endif

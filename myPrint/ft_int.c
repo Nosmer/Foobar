@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:27:42 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/22 14:48:36 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/08/30 12:19:32 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,13 @@ static int	ft_put_di(t_listf *lst, intmax_t di)
 			res += ft_print('+');
 		else
 			res += ft_print('-');
-		res += ft_putnbr_mod(di);
 	}
 	else if (SPACE == ' ')
 	{
 		if (di != '-')
 			res += ft_print(' ');
-		res += ft_putnbr_mod(di);
 	}
-	else
-		res += ft_putnbr_mod(di);
+	res += ft_putnbr_mod(di);
 	while (MINUS == '-' && (lst->wid)-- > 0)
 		res += ft_print(' ');
 	return (res);
