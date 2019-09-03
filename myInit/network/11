@@ -1,0 +1,5 @@
+The device that makes a connection between
+local network and outside world is NAT - 
+Network Adress Translation.
+Run traceroute slash16.org.
+Second line contains NAT IP address.
