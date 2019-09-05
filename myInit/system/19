@@ -1,1 +1,1 @@
-sudo systemctl list-unit-files | grep enabl | grep .service
+systemctl list-unit-files | grep enabl | grep .service

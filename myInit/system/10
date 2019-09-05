@@ -1,1 +1,2 @@
-sudo fdisk -l
+#su -
+fdisk -l
