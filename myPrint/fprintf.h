@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 13:26:57 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/08/30 13:55:06 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/09/28 14:43:26 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ typedef	struct		s_listf
 	char			type;
 }					t_listf;
 
-typedef struct		s_lista
-{
-	char			*content;
-	struct s_lista	*next;
-}					t_lista;
-
 int					ft_printf(char *format, ...);
 int					ft_parse_format(char **format, va_list ap);
 int					ft_handle_type(t_listf *lst, va_list ap);
@@ -51,11 +45,8 @@ int					ft_pointer(t_listf *lst, void *p);
 int					ft_int_oct(t_listf *lst, void *oct);
 int					ft_hexuint(t_listf *lst, void *hex);
 int					ft_double_f(t_listf *lst, double f);
-int					ft_double_lf(t_listf *lst, long double f);
-int					ft_add_lst(t_lista **head, char *content);
-void				ft_prnt_lst(t_lista *head);
-void				ft_free_lst(t_lista *head);
 void				ft_prnt_arr(char *arr, int len);
 int					ft_print(int c);
 int					ft_pow(int b, int n);
+int					ft_ftoa(t_listf *lst, double f, char **str);
 # endif

@@ -34,7 +34,7 @@ int		main()
 	int		i = 0;
 	int		j = 0;
 	int		t = 345678;
-	double	d = 456.654;
+	double	d = 456.456536656;
 	char	c = 'a';
 //	ft_printf("Foo%-3.3sBar\n", "foobar");
 	i = printf("pr: %f\n", d);

@@ -6,7 +6,7 @@
 #    By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/30 12:05:59 by bconsuel          #+#    #+#              #
-#    Updated: 2019/08/30 15:13:57 by bconsuel         ###   ########.fr        #
+#    Updated: 2019/08/30 15:17:50 by bconsuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all clean fclean re
@@ -22,7 +22,7 @@ FLAG = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	@make -C $(SRC_L) re
 
 clean:
