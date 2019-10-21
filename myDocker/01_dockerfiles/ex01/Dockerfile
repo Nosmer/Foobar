@@ -1,3 +1,8 @@
+#docker build -t name .
+#docker run -it -p 9987:9987/udp -p 10011:10011 -p 30033:30033 --rm name
+#from client: connect to
+#docker-machine ip Char
+#and insert your privelege key
 FROM debian
 
 ENV TS3SERVER_LICENSE=accept
