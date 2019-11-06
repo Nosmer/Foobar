@@ -6,13 +6,13 @@
 #    By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/28 13:47:09 by bconsuel          #+#    #+#              #
-#    Updated: 2019/11/05 14:13:46 by bconsuel         ###   ########.fr        #
+#    Updated: 2019/11/06 14:02:40 by bconsuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all clean fclean re
 NAME = ft_ls
 SRC_L = ./libft
-SRC_H = main.c init_list.c parse_args.c
+SRC_H = main.c init_list.c ft_puterr_ls.c get_dir.c get_args.c
 FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)

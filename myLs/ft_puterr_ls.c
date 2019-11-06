@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_puterr_ls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 14:12:16 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/06 14:47:23 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/11/06 14:02:50 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/11/06 14:48:05 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftls.h"
 
-int		main(int argc, char *argv[])
+static void	err_char(char c)
 {
-	t_opts	lst;
+	write(2, &c, 1);
+}
 
-	init_list(&lst);
-	get_args(argc, argv, &lst);
-	return (0);
+static void	err_str(char *s)
+{
+	while (*s)
+	{
+		err_char(*s);
+		s++;
+	}
+}
+
+void		ft_puterr_ls(int nbr, char *dir, char *err)
+{
+	err_str("ft_ls: ");
+	if (nbr == 1)
+	{
+		err_str(dir);
+		err_str(": ");
+		err_str(err);
+		err_char('\n');
+	}
+	else
+		err_str("tbd");
 }
