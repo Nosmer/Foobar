@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 13:00:30 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/06 14:55:48 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:46:54 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_opts
 	int			lon;
 }				t_opts;
 
-void			ft_puterr_ls(int nbr, char *dir, char *err);
+void			puterr_ls(int nbr, char *dir, char *err);
 int				get_dir(char *dir, t_opts *lst);
 int				get_args(int argc, char **argv, t_opts *lst);
 void			init_list(t_opts *lst);
