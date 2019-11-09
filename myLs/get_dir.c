@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:57:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/07 15:36:25 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/11/09 14:42:58 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			get_dir(char *dir, t_opts *lst)
 	char			link[PATH_MAX + 1];
 
 	if ((w_dir = opendir(dir)) == NULL)
-		puterr_ls(1, dir, strerror(errno));
+		puterr_ls(dir, ERR);
 	else
 	{
 		while ((entry = readdir(w_dir)) != NULL)
@@ -42,13 +42,13 @@ int			get_dir(char *dir, t_opts *lst)
 			ft_strncat(path, entry->d_name, PATH_MAX);
 			if (lstat(path, &info) == 0)
 			{
-				if (S_ISDIR(info.st_mode))
+				if (S_ISDIR(info.st_mode) && lst->rec == 1)
 				{
 					ft_putstr(path);
 					ft_putchar('\n');
 					get_dir(path, lst);
 				}
-				else if (S_ISREG(info.st_mode))
+				else if (S_ISREG(info.st_mode) || lst->rec == 0)
 				{
 					ft_putstr(entry->d_name);
 					ft_putchar('\n');
@@ -62,10 +62,10 @@ int			get_dir(char *dir, t_opts *lst)
 						ft_putchar('\n');
 					}
 					else
-						puterr_ls(1, path, strerror(errno));
+						puterr_ls(path, ERR);
 				}
 				else
-					puterr_ls(1, path, strerror(errno));
+					puterr_ls(path, ERR);
 			}
 		}
 		closedir(w_dir);

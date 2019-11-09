@@ -6,36 +6,27 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 15:27:38 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/07 15:27:47 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/11/09 13:24:54 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftls.h"
 
-static void	err_char(char c)
+void		puterr_ls(char *s, int err)
 {
-	write(2, &c, 1);
-}
-
-static void	err_str(char *s)
-{
-	while (*s)
+	if (err == USAGE)
 	{
-		err_char(*s);
-		s++;
+		ft_putstr_fd("ft_ls: illegal option -- ", 2);
+		ft_putchar_fd(*s, 2);
+		ft_putchar_fd('\n', 2);
+		ft_putendl_fd("usage: ./ft_ls [-Ralrt] [file ...]", 2);
 	}
-}
-
-void		puterr_ls(int nbr, char *dir, char *err)
-{
-	err_str("ft_ls: ");
-	if (nbr == 1)
+	else if (err == ERR)
 	{
-		err_str(dir);
-		err_str(": ");
-		err_str(err);
-		err_char('\n');
+		ft_putstr_fd("ft_ls: ", 2);
+		ft_putstr_fd(s, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd(strerror(errno), 2);
 	}
-	else
-		err_str("tbd");
+	exit(EXIT_FAILURE);
 }

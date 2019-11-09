@@ -6,27 +6,31 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:46:06 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/06 15:43:28 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/11/09 13:42:54 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftls.h"
 
-int		parse_opts(char *str, size_t opt, t_opts *lst)
+int		parse_opts(char *str, t_opts *lst)
 {
-	while (str[opt])
+	size_t	opt;
+
+	opt = 0;
+	while (str[++opt])
 	{
 		if (str[opt] == 'l')
 			lst->lon = 1;
-		if (str[opt] == 'R')
+		else if (str[opt] == 'R')
 			lst->rec = 1;
-		if (str[opt] == 'a')
+		else if (str[opt] == 'a')
 			lst->all = 1;
-		if (str[opt] == 'r')
+		else if (str[opt] == 'r')
 			lst->rev = 1;
-		if (str[opt] == 't')
+		else if (str[opt] == 't')
 			lst->time = 1;
-		opt++;
+		else
+			puterr_ls(&str[opt], USAGE);
 	}
 	return (0);
 }
@@ -34,16 +38,14 @@ int		parse_opts(char *str, size_t opt, t_opts *lst)
 int		get_args(int argc, char **argv, t_opts *lst)
 {
 	int		i;
-	size_t	opt;
 	int		flag;
 
 	i = 1;
 	flag = 0;
 	while (i < argc)
 	{
-		opt = 0;
-		if (argv[i][opt] == '-')
-			parse_opts(argv[i], opt, lst);
+		if (argv[i][0] == '-' && flag == 0)
+			parse_opts(argv[i], lst);
 		else
 		{
 			get_dir(argv[i], lst);
