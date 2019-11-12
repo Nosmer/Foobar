@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 15:27:38 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/09 13:24:54 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:12:23 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void		puterr_ls(char *s, int err)
 		ft_putstr_fd(": ", 2);
 		ft_putendl_fd(strerror(errno), 2);
 	}
-	exit(EXIT_FAILURE);
+	if (err == USAGE || err == CRIT)
+		exit(EXIT_FAILURE);
 }

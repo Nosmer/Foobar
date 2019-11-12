@@ -6,56 +6,55 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:57:45 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/11/11 16:51:17 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:21:51 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftls.h"
 
-int			get_path(char *path, char *ent, char *dir)
+void		get_path(char *path, char *ent, char *dir)
 {
 	ft_strncpy(path, dir, PATH_MAX);
 	ft_strncat(path, "/", PATH_MAX);
 	ft_strncat(path, ent, PATH_MAX);
-	return (0);
 }
 
-int			get_stat(char *p, t_opts *lst, struct dirent *e)
+int			get_stat(char *path, char *e_name, t_opts *lst)
 {
 	char			link[PATH_MAX + 1];
-	struct stat		d;
+	struct stat		data;
 
-	if (lstat(p, &d) == 0)
+	if (lstat(path, &data) == 0)
 	{
-		if (S_ISDIR(d.st_mode) && lst->rec == 1)
+		if (S_ISDIR(data.st_mode) && lst->rec == 1)
 		{
-			ft_putstr(p);
+			ft_putstr(path);
 			ft_putchar('\n');
-			get_dir(p, lst);
+			get_dir(path, lst);
 		}
-		else if (S_ISREG(d.st_mode) || lst->rec == 0)
+		else if (S_ISREG(data.st_mode) || lst->rec == 0)
 		{
-			ft_putstr(e->d_name);
+			ft_putstr(e_name);
 			ft_putchar('\n');
 		}
-		else if (S_ISLNK(d.st_mode))
+		else if (S_ISLNK(data.st_mode))
 		{
-			if (readlink(p, link, PATH_MAX) != -1)
+			if (readlink(path, link, PATH_MAX) != -1)
 			{
-				ft_putstr(e->d_name);
+				ft_putstr(e_name);
 				ft_putstr(link);
 				ft_putchar('\n');
 			}
 			else
-				puterr_ls(p, ERR);
+				puterr_ls(path, ERR);
 		}
 		else
-			puterr_ls(p, ERR);
+			puterr_ls(path, ERR);
 	}
 	return (0);
 }
 
-int			get_dir(char *dir, t_opts *lst)
+int				get_dir(char *dir, t_opts *lst)
 {
 	DIR				*w_dir;
 	struct dirent	*entry;
@@ -78,7 +77,7 @@ int			get_dir(char *dir, t_opts *lst)
 				continue;
 			}
 			get_path(path, entry->d_name, dir);
-			get_stat(path, lst, entry);
+			get_stat(path, entry->d_name, lst);
 		}
 		closedir(w_dir);
 	}
