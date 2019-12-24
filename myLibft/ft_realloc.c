@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 14:45:25 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/05/23 12:41:35 by bconsuel         ###   ########.fr       */
+/*   Created: 2019/12/24 13:53:16 by bconsuel          #+#    #+#             */
+/*   Updated: 2019/12/24 15:01:49 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	*ft_realloc(void *ptr,size_t curr_size, size_t new_size)
 {
-	size_t	i;
-	char	*dup;
+	int		i;
+	void	*ret;
 
 	i = 0;
-	if (!(dup = (char*)malloc(sizeof(char) * ft_strlen(s1) + 1)))
-		return (NULL);
-	while (s1[i])
+	if (new_size == 0)
 	{
-		dup[i] = s1[i];
-		i++;
+		free(ptr);
+		return (NULL);
 	}
-	dup[i] = '\0';
-	return (dup);
+	else if (!ptr)
+		return (malloc(new_size));
+	else if (curr_size >= new_size)
+		return ptr;
+	else 
+	{
+		ret = malloc(new_size);
+		if (ret)
+		{
+			ft_memcpy(ret, ptr, curr_size);
+			free(ptr);
+		}
+		return ret;
+	}
 }

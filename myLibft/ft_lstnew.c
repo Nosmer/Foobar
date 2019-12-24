@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 12:14:17 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/29 13:00:40 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:48:08 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	else
 	{
 		if (!(elem->content = malloc(content_size)))
+		{
+			free(elem);
 			return (NULL);
+		}
 		elem->content_size = content_size;
 		ft_memcpy(elem->content, content, content_size);
 	}

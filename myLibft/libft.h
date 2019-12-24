@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 10:46:21 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/30 11:46:16 by bconsuel         ###   ########.fr       */
+/*   Updated: 2019/12/24 14:42:51 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lfree(t_list	*lst);
+void				*ft_realloc(void *ptr,size_t curr_size, size_t new_size);
 
 #endif

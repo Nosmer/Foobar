@@ -6,7 +6,7 @@
 #    By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:04:29 by bconsuel          #+#    #+#              #
-#    Updated: 2019/04/30 11:47:37 by bconsuel         ###   ########.fr        #
+#    Updated: 2019/12/24 14:19:52 by bconsuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -21,19 +21,19 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
 	  ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c \
 	  ft_toupper.c ft_dfree.c ft_strntrim.c ft_lstnew.c ft_lstdelone.c \
-	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lfree.c
+	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lfree.c ft_realloc.c
 SRC_O = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(SRC)
-	gcc -c -Wall -Wextra -Werror $^
-	ar rc $@ $(SRC_O)
+	@gcc -c -Wall -Wextra -Werror $^
+	@ar rc $@ $(SRC_O)
 
 clean:
-	rm -f $(SRC_O)
+	@rm -f $(SRC_O)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
