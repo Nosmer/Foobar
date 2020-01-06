@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:23:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/12/24 12:50:16 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/06 16:45:34 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-# define MINISHELL_BUFSIZE 1024;
+# define MS_BUFSIZE 1024;
+# define MS_TOK_BUFSIZE 64;
+# define MS_TOK_DELIM " -\n\a\r\t";
 
 char	*shell_read(void);
 char	**shell_split(char *line);

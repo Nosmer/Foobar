@@ -1,52 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_read.c                                       :+:      :+:    :+:   */
+/*   shell_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 12:06:10 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/06 16:24:15 by bconsuel         ###   ########.fr       */
+/*   Created: 2020/01/06 16:08:46 by bconsuel          #+#    #+#             */
+/*   Updated: 2020/01/06 16:27:02 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-char	*shell_read(void)
+char	**shell_split(char *line)
 {
-	char	*buf;
 	int		bufsize;
 	int		old;
 	int		pos;
-	int		ch;
+	char	**tokens;
+	char	*token;
 
-	bufsize = MS_BUFSIZE;
-	pos = 0;
+	bufsize = MS_TOK_BUFSIZE;
 	old = 0;
-	if (!(buf = malloc(sizeof(char) * bufsize)))
+	pos = 0;
+	if (!(tokens = malloc(bufsize * sizeof(char*))))
 	{
 		ft_putendl_fd("minishell: allocation error", 2);
 		exit(EXIT_FAILURE);
 	}
-	while ((read(stdin, &ch, 1)) > 0)
+	token = get_token(line, MS_TOK_DELIM);
+	while (token != NULL)
 	{
-		if (ch == EOF || ch == '\n')
-		{
-			buf[pos] = '\0';
-			return (buf);
-		}
-		else
-			buf[pos] = ch;
+		tokens[pos] = token;
 		pos++;
 		if (pos >= bufsize)
 		{
-			old = bufsize
-			bufsize += MS_BUFSIZE;
-			if (!(buf = ft_realloc(buf, old, bufsize)))
+			old = bufsize;
+			bufsize += MS_TOK_BUFSIZE;
+			if (!(tokens = ft_realloc(buf, old, bufsize)))
 			{
 				ft_putendl_fd("minishell: allocation error", 2);
 				exit(EXIT_FAILURE);
 			}
 		}
+		token = get_token(NULL, MS_TOK_DELIM);
 	}
+	token[pos] = NULL;
+	return (tokens);
 }
