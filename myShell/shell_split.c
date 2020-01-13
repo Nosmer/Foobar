@@ -6,9 +6,16 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:08:46 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/06 16:27:02 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/13 17:03:36 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
+
+/*
+** Splits the given line into tokens
+** and puts them in 2d array.
+*/
 
 char	**shell_split(char *line)
 {
@@ -31,11 +38,14 @@ char	**shell_split(char *line)
 	{
 		tokens[pos] = token;
 		pos++;
+/*
+** Reallocating tokens in case we run out of space.
+*/
 		if (pos >= bufsize)
 		{
 			old = bufsize;
 			bufsize += MS_TOK_BUFSIZE;
-			if (!(tokens = ft_realloc(buf, old, bufsize)))
+			if (!(tokens = ft_realloc(tokens, old, bufsize)))
 			{
 				ft_putendl_fd("minishell: allocation error", 2);
 				exit(EXIT_FAILURE);
@@ -43,6 +53,25 @@ char	**shell_split(char *line)
 		}
 		token = get_token(NULL, MS_TOK_DELIM);
 	}
-	token[pos] = NULL;
+	tokens[pos] = NULL;	
 	return (tokens);
 }
+
+/* Main for testing
+**
+**int		main(void)
+**{
+**	char	line[50] = "FooBar1 FooBar2 FooBar3\n";
+**	char	**args;
+**	int		status;
+**	int		i;
+**
+**	args = shell_split(line);
+**	i = 0;
+**	while (args[i])
+**	{
+**		printf("%s\n", args[i]);
+**		i++;
+**	}
+**}
+*/
