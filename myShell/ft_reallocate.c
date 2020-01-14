@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_run.c                                        :+:      :+:    :+:   */
+/*   ft_reallocate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 13:13:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/14 15:31:35 by bconsuel         ###   ########.fr       */
+/*   Created: 2020/01/14 15:36:42 by bconsuel          #+#    #+#             */
+/*   Updated: 2020/01/14 15:46:56 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		shell_run(char **args, char **environ)
-{
-	pid_t	pid;
-	pid_t	wpid;
-	int		status;
+/*
+** Reallocates memory in case we are running out of bounds.
+** 25 lines limit is a terrible thing.
+*/
 
-	pid = fork();
-	if (pid == 0)
+void	ft_reallocate(char **tokens, int bufsize)
+{
+	int		old;
+
+	old = bufsize;
+	bufsize += MS_TOK_BUFSIZE;
+	if (!(tokens = ft_realloc(tokens, old, bufsize)))
 	{
-		if (execve(args[0], args, environ) == -1)
-			ft_putendl_fd("minishell", 2);
+		ft_putendl_fd("minishell: allocation error", 2);
 		exit(EXIT_FAILURE);
 	}
-	else if (pid < 0)
-		ft_putendl_fd("minishell", 2);
-	else
-	{
-		wpid = waitpid(pid, &status, WUNTRACED);
-		while (!WIFEXITED(status) && !WIFSIGNALED(status))
-			wpid = waitpid(pid, &status, WUNTRACED);
-	}
-	return (1);
 }

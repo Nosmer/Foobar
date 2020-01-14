@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:06:10 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/13 17:07:15 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:30:47 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 ** Reads user input (STDIN_FILENO) and returns a resulting string.
 */
 
-char	*shell_read(void)
+char		*shell_read(void)
 {
 	char	*buf;
+	char	ch;
 	int		bufsize;
-	int		old;
 	int		pos;
-	int		ch;
 
 	bufsize = MS_BUFSIZE;
 	pos = 0;
-	old = 0;
 	if (!(buf = malloc(sizeof(char) * bufsize)))
 	{
 		ft_putendl_fd("minishell: allocation error", 2);
@@ -34,32 +32,21 @@ char	*shell_read(void)
 	}
 	while ((read(STDIN_FILENO, &ch, 1)) > 0)
 	{
-		if (ch == EOF || ch == '\n')
+		if (ft_strchr(&ch, EOF) || ft_strchr(&ch, '\n'))
 		{
 			buf[pos] = '\0';
 			return (buf);
 		}
 		else
-			buf[pos] = ch;
-		pos++;
-/*
-** Reallocating buf in case we run out of space.
-*/
+			buf[pos++] = ch;
 		if (pos >= bufsize)
-		{
-			old = bufsize;
-			bufsize += MS_BUFSIZE;
-			if (!(buf = ft_realloc(buf, old, bufsize)))
-			{
-				ft_putendl_fd("minishell: allocation error", 2);
-				exit(EXIT_FAILURE);
-			}
-		}
+			ft_reallocate(&buf, bufsize);
 	}
 	return (buf);
 }
 
-/* Main for testing
+/*
+** Main for testing
 **
 **int		main(void)
 **{	char	*c;
@@ -68,6 +55,7 @@ char	*shell_read(void)
 **	status = 1;
 **	while (status != 0)
 **	{
+**		write(1, "$>", 2);
 **		c = shell_read();
 **		printf("%s\n", c);
 **		status = 0;

@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 13:53:16 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/08 16:04:13 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:32:47 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	*ft_realloc(void *ptr, size_t curr_size, size_t new_size)
 	else if (!ptr)
 		return (malloc(new_size));
 	else if (curr_size >= new_size)
-		return ptr;
-	else 
+		return (ptr);
+	else
 	{
 		ret = malloc(new_size);
 		if (ret)
@@ -35,6 +35,6 @@ void	*ft_realloc(void *ptr, size_t curr_size, size_t new_size)
 			ft_memcpy(ret, ptr, curr_size);
 			free(ptr);
 		}
-		return ret;
+		return (ret);
 	}
 }
