@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:23:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/13 16:54:29 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:32:43 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdio.h>
 # define MS_BUFSIZE 1024
 # define MS_TOK_BUFSIZE 64
-# define MS_TOK_DELIM " \n\a\r\t"
+# define MS_TOK_DELIM " \n\a\r\t\v\f"
 
 char	*shell_read(void);
 char	**shell_split(char *line);
