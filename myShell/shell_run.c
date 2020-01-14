@@ -6,11 +6,11 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:13:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/13 16:54:51 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:57:08 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include "minishell.h"
 
 int		shell_run(char **args, char **environ)
 {
@@ -22,11 +22,11 @@ int		shell_run(char **args, char **environ)
 	if (pid == 0)
 	{
 		if (execve(args[0], args, environ) == -1)
-			ft_putendl_fd("minishell");
+			ft_putendl_fd("minishell", 2);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
-		ft_putendl_fd("minishell");
+		ft_putendl_fd("minishell", 2);
 	else
 	{
 		wpid = waitpid(pid, &status, WUNTRACED);

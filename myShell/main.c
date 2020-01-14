@@ -6,13 +6,13 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:30 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/13 14:42:48 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:57:33 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		main(int argc, char **argv, char **environ)
+int		main(int argc, char **environ)
 {
 	char	*line;
 	char	**args;
@@ -24,7 +24,7 @@ int		main(int argc, char **argv, char **environ)
 		write(1, "$>", 2);
 		line = shell_read();
 		args = shell_split(line);
-		status = shell_exec(args, environ);
+		status = shell_run(args, environ);
 
 		free(line);
 		free(args);

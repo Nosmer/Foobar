@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:23:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/14 12:32:43 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:56:45 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 char	*shell_read(void);
 char	**shell_split(char *line);
-int		shell_run(char **args);
+int		shell_run(char **args, char **environ);
 char	*get_token(char *s, const char *delim);
 
 #endif
