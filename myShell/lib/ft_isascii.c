@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 11:51:10 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/11 11:55:23 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:06:49 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Tests for an ASCII character. Returns 1 if true.
+*/
 
 int		ft_isascii(int c)
 {

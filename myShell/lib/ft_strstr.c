@@ -6,11 +6,16 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 13:40:44 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/23 12:15:58 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 16:49:35 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Locates the first occurence of the null-terminated string needle in the
+** null-terminated string haystack.
+*/
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {

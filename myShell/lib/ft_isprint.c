@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 11:55:33 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/11 12:27:31 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:07:23 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Tests for printable characters, returns 1 if true.
+*/
 
 int		ft_isprint(int c)
 {

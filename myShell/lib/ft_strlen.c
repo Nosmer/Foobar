@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 14:41:38 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/22 11:09:16 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 16:25:02 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Returns the length of a string s.
+*/
 
 size_t	ft_strlen(const char *s)
 {

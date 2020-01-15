@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 12:30:10 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/15 16:25:53 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 17:09:13 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Converts upper-case letter to lower case.
+*/
 
 int		ft_tolower(int c)
 {

@@ -6,11 +6,18 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 11:41:35 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/23 15:53:00 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 16:41:29 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Copies and concatenates strings respectively. More safe to use than
+** strncpy() and strncat(). Appends the NULL-terminated string src
+** to the end of dst. Will append at most size - length of dst - 1 bytes,
+** NULL-terminating the result.
+*/
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
