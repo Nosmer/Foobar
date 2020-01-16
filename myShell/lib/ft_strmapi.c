@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 15:14:28 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/19 15:40:41 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/16 13:01:47 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Same as map
+*/
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

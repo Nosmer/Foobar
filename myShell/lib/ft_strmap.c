@@ -6,11 +6,16 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 15:04:01 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/19 15:17:49 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/16 13:01:04 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Applies function f to each character of a string s.
+** Stores result in arr. Returns arr if operation is successful.
+*/
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {

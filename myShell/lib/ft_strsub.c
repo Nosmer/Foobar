@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 16:05:00 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/22 10:24:03 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/16 13:06:55 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Returns a copy of s, starting from start.
+*/
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {

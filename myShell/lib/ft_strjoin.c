@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 16:25:47 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/22 10:40:23 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/16 13:09:00 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Returns a fresh string made from concatenated s1 and s2.
+*/
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

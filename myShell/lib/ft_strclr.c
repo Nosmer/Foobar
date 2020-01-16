@@ -6,11 +6,15 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:13:02 by bconsuel          #+#    #+#             */
-/*   Updated: 2019/04/19 15:41:55 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/16 12:56:53 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Fills given string with null-terminators.
+*/
 
 void	ft_strclr(char *s)
 {
