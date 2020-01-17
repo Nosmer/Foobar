@@ -6,11 +6,18 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:30 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/17 15:46:59 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/17 17:36:27 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+/*
+** Main of a minishell. Firstly it copies environment variables,
+** then in read_line reads user input and stores it in line.
+** After that splits the line into arguments by a delimiter from
+** minishell.h and launches them with shell_run.
+*/
 
 int		main(int argc, char **argv, char **envp)
 {
@@ -32,5 +39,6 @@ int		main(int argc, char **argv, char **envp)
 		free(line);
 		free(args);
 	}
+	strdd_free(envp);
 	return (0);
 }
