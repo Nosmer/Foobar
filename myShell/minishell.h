@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:23:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/14 15:47:52 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:55:56 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	**shell_split(char *line);
 int		shell_run(char **args, char **environ);
 char	*get_token(char *s, const char *delim);
 void	ft_reallocate(char **tokens, int bufsize);
+char	**strdd_cpy(char **source);
 
 #endif
