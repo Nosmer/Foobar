@@ -6,18 +6,19 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:13:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/14 17:22:23 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:00:30 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		shell_run(char **args, char **environ)
+int			shell_exec(char **args, char **environ)
 {
 	pid_t	pid;
 	pid_t	wpid;
 	int		status;
 
+	args[0] = ft_strjoin("/bin/", args[0]);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -34,4 +35,23 @@ int		shell_run(char **args, char **environ)
 			wpid = waitpid(pid, &status, WUNTRACED);
 	}
 	return (1);
+}
+
+int			shell_run(char **args, char **environ)
+{
+	int		i;
+
+	i = 0;
+	if (args[0] == NULL)
+		return (1);
+	if (ft_strcmp(args[0], "exit") == 0)
+		return (0);
+/*	while (i < num_builtin())
+**	{
+**		if (ft_strcmp(args[0], builtin_s[i]) == 0)
+**			return (*builtin_f[i](args, environ));
+**		i++;
+**	}
+*/
+	return (shell_exec(args, environ));
 }
