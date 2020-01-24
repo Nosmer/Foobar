@@ -6,16 +6,22 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 15:48:40 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/24 15:00:49 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/24 16:01:31 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Check out getpwnam()
+*/
+
 #include "minishell.h"
 
-char		*ms_get_line(char **environ, char *str, int len)
+char		*ms_get_line(char **environ, char *str)
 {
+	int		len;
 	char	*res;
 
+	len = ft_strlen(str);
 	res = NULL;
 	while (*environ)
 	{
@@ -23,6 +29,8 @@ char		*ms_get_line(char **environ, char *str, int len)
 			break ;
 		environ++;
 	}
+	if (res[len] == '=')
+		res++;
 	return (res += len);
 }
 
@@ -35,15 +43,17 @@ void		ms_get_tilde(char *args, char **environ)
 	while (args[i] != '/' && args[i] != '\n')
 		i++;
 	if (i == 1)
-		tmp = ms_get_line(environ, "HOME", 5);
+		tmp = ms_get_line(environ, "HOME");
 	else if (i == 2 && args[1] == '+')
-		tmp = ms_get_line(environ, "PWD", 4);
+		tmp = ms_get_line(environ, "PWD");
 	else if (i == 2 && args[1] == '-')
-		tmp = ms_get_line(environ, "OLDPWD", 7);
-	else
-		tmp = ms_get_user(environ, args, i);	
+		tmp = ms_get_line(environ, "OLDPWD");
+//	else
+//	GET USER
+//		tmp = ms_get_user(environ, args, i);	
 	args += i;
 	args = ft_strjoin(tmp, args);
+printf("%s\n", args);
 }
 
 void		args_check(char **args, char **environ)
