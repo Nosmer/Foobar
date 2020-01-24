@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 15:57:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/17 17:23:16 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:01:57 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**strdd_cpy(char **src)
 	{
 		wid = ft_strlen(src[i] + 1);
 		arr[i] = malloc(wid);
-		ft_memcpy(arr[i], src[i], wid);
+		ft_memcpy(arr[i], src[i], wid + 1);
 		i++;
 	}
 	return (arr);
