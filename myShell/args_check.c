@@ -6,48 +6,52 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 15:48:40 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/23 18:37:26 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/24 15:00:49 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		get_tilde(char *args, char **environ)
+char		*ms_get_line(char **environ, char *str, int len)
 {
-	char	*tmp;
-	int		i;
+	char	*res;
 
-	i = 0;
-	tmp = NULL;
-	if (args[1] == '/')
-		ft_strcpy(tmp, "HOME=");
-	else if (args[1] == '+')
-		ft_strcpy(tmp, "PWD=");
-	else if (args[1] == '-')
-		ft_strcpy(tmp, "OLDPWD=");
-	else
-	{
-		while (args[i] != '/')
-		{
-			ft_strcat(tmp, &args[i]);
-			i++;
-		}
-	}
-printf("%s\n", tmp);
+	res = NULL;
 	while (*environ)
 	{
-		tmp = ft_strnstr(*environ, tmp, ft_strlen(tmp));
+		if ((res = ft_strnstr(*environ, str, len)))
+			break ;
 		environ++;
 	}
+	return (res += len);
+}
+
+void		ms_get_tilde(char *args, char **environ)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (args[i] != '/' && args[i] != '\n')
+		i++;
+	if (i == 1)
+		tmp = ms_get_line(environ, "HOME", 5);
+	else if (i == 2 && args[1] == '+')
+		tmp = ms_get_line(environ, "PWD", 4);
+	else if (i == 2 && args[1] == '-')
+		tmp = ms_get_line(environ, "OLDPWD", 7);
+	else
+		tmp = ms_get_user(environ, args, i);	
+	args += i;
+	args = ft_strjoin(tmp, args);
 }
 
 void		args_check(char **args, char **environ)
 {
 	while (*args)
 	{
-		ft_putchar(*args[0]);
 		if (*args[0] == '~')
-			get_tilde(*args, environ);
+			ms_get_tilde(*args, environ);
 //		if (*args[0] == '$')
 //			get_param(*args, environ);
 		args++;
