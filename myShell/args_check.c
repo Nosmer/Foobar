@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 15:48:40 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/24 16:01:31 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:37:32 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,40 @@ char		*ms_get_line(char **environ, char *str)
 	return (res += len);
 }
 
-void		ms_get_tilde(char *args, char **environ)
+char		*ms_get_tilde(char *str, char **environ)
 {
 	int		i;
+	int		flag;
 	char	*tmp;
 
 	i = 0;
-	while (args[i] != '/' && args[i] != '\n')
+	flag = 0;
+	while (str[i] != '/' && str[i] != '\0')
 		i++;
 	if (i == 1)
 		tmp = ms_get_line(environ, "HOME");
-	else if (i == 2 && args[1] == '+')
+	else if (i == 2 && str[1] == '+')
 		tmp = ms_get_line(environ, "PWD");
-	else if (i == 2 && args[1] == '-')
+	else if (i == 2 && str[1] == '-')
 		tmp = ms_get_line(environ, "OLDPWD");
-//	else
-//	GET USER
-//		tmp = ms_get_user(environ, args, i);	
-	args += i;
-	args = ft_strjoin(tmp, args);
-printf("%s\n", args);
+	str += i;
+	str = ft_strjoin(tmp, str);
+	return (str);
 }
 
 void		args_check(char **args, char **environ)
 {
+	char	*tmp;
+
+	tmp = args[0];
 	while (*args)
 	{
 		if (*args[0] == '~')
-			ms_get_tilde(*args, environ);
-//		if (*args[0] == '$')
-//			get_param(*args, environ);
+			*args = ms_get_tilde(*args, environ);
+//		else if (*args[0] == '$')
+//			ms_get_param(*args, environ);
+		else if (ft_strcmp(*args, args[0]) == 0)
+			*args = ft_strjoin("/bin/", args[0]);
 		args++;
 	}
 }
