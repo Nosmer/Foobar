@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 15:48:40 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/27 16:37:32 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/28 19:13:22 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,36 @@ char		*ms_get_line(char **environ, char *str)
 		environ++;
 	}
 	if (res[len] == '=')
-		res++;
+		len++;
 	return (res += len);
+}
+
+char		*ms_get_param(char *str, char **environ)
+{
+	int		start;
+	int		end;
+	char	*tmp;
+
+	start = 0;
+	end = ft_strlen(str);
+	while (*str)
+	{
+		if (*str == '$' || *str == '{')
+			start++;
+		if (*str == '}')
+			end--;
+		str++;
+	}
+	tmp = ft_strsub(str, start, end - start + 1);
+	return (str);
 }
 
 char		*ms_get_tilde(char *str, char **environ)
 {
 	int		i;
-	int		flag;
 	char	*tmp;
 
 	i = 0;
-	flag = 0;
 	while (str[i] != '/' && str[i] != '\0')
 		i++;
 	if (i == 1)
@@ -57,17 +75,17 @@ char		*ms_get_tilde(char *str, char **environ)
 
 void		args_check(char **args, char **environ)
 {
-	char	*tmp;
+	int		i;
 
-	tmp = args[0];
-	while (*args)
+	i = 0;
+	while (args[i])
 	{
-		if (*args[0] == '~')
-			*args = ms_get_tilde(*args, environ);
-//		else if (*args[0] == '$')
-//			ms_get_param(*args, environ);
-		else if (ft_strcmp(*args, args[0]) == 0)
-			*args = ft_strjoin("/bin/", args[0]);
-		args++;
+		if (args[i][0] == '~')
+			args[i] = ms_get_tilde(args[i], environ);
+		else if (args[i][0] == '$')
+			args[i] = ms_get_param(args[i], environ);
+		else if (i == 0 && ft_strcmp(args[i], &args[i][0]) == 0)
+			args[i] = ft_strjoin("/bin/", &args[i][0]);
+		i++;
 	}
 }

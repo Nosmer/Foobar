@@ -6,11 +6,59 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:13:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/27 16:49:15 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/28 19:23:23 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char		*get_exec_name(char *str, int mode)
+{
+/*
+** ERROR HERE
+*/
+	int		i;
+	char	*name;
+
+	i = 0;
+	while (str[i])
+	{
+		if (mode == 0)
+		{
+			if (str[i] == '/')
+				name = &str[i];
+		}
+		else
+		{
+			if (str[i] == '/' && ft_isprint(str[i + 1]))
+				name = &str[i];
+		}
+		i++;
+	}
+	++name;
+	return (name);
+}
+
+void		check_avail(char *str)
+{
+	int		len;
+
+	len = ft_strlen(str) - 1;
+	if (access(str, F_OK) != 0)
+	{
+		if (str[len] == '/')
+		{
+			ft_putstr_fd("minishell: no such file or directory: ", 2);
+			ft_putendl_fd(get_exec_name(str, 1), 2);
+		}
+		else
+		{
+			ft_putstr_fd("minishell: command not found: ", 2);
+			ft_putendl_fd(get_exec_name(str, 0), 2);
+		}
+		exit(EXIT_FAILURE);
+	}
+}
 
 int			shell_exec(char **args, char **environ)
 {
@@ -21,11 +69,9 @@ int			shell_exec(char **args, char **environ)
 	pid = fork();
 	if (pid == 0)
 	{
+		check_avail(args[0]);
 		if (execve(args[0], args, environ) == -1)
-		{
-			ft_putstr_fd("minishell: command not found:", 2);
-			ft_putendl_fd(args[0], 2);
-		}
+			ft_putstr_fd("minishell", 2);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
@@ -44,11 +90,11 @@ int			shell_run(char **args, char **environ)
 	int		i;
 
 	i = 0;
+	if (args[0] == NULL)
+		return (1);
 	if (ft_strcmp(args[0], "exit") == 0)
 		return (0);
 	args_check(args, environ);
-	if (args[0] == NULL)
-		return (1);
 /*	while (i < num_builtin())
 **	{
 **		if (ft_strcmp(args[0], builtin_s[i]) == 0)
