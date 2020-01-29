@@ -6,13 +6,13 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 12:48:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/29 12:52:02 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:39:33 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char		*ms_get_param(char *str, char **environ)
+char		*ms_get_param(char **environ, char *str)
 {
 	int		start;
 	int		end;
