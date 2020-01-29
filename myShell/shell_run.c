@@ -6,36 +6,11 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:13:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:37:38 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/29 15:04:05 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char		*get_exec_name(char *str, int mode)
-{
-	int		i;
-	char	*name;
-
-	i = 0;
-	while (str[i])
-	{
-		if (mode == 0)
-		{
-			if (str[i] == '/')
-				name = &str[i];
-		}
-		else
-		{
-			if (str[i] == '/' && ft_isprint(str[i + 1]))
-				name = &str[i];
-		}
-		i++;
-	}
-	if (mode == 0)
-		++name;
-	return (name);
-}
 
 int			shell_exec(char **args, char **environ)
 {
