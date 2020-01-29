@@ -6,15 +6,16 @@
 #    By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 12:33:18 by bconsuel          #+#    #+#              #
-#    Updated: 2020/01/20 15:02:08 by bconsuel         ###   ########.fr        #
+#    Updated: 2020/01/29 13:33:28 by bconsuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all clean fclean re
 NAME = minishell
 SRC_L = ./lib
 SRC_H = main.c get_token.c shell_read.c shell_run.c shell_split.c \
-		ft_reallocate.c strdd_cpy.c strdd_free.c
-FLAG = -Wall -Wextra -Werror
+		ft_reallocate.c strdd_cpy.c strdd_free.c args_check.c \
+		ms_get_param.c ms_get_tilde.c
+#FLAG = -Wall -Wextra -Werror
 
 all: $(NAME)
 

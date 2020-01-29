@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:30 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/20 14:52:18 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:41:12 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int		main(int argc, char **argv, char **envp)
 	status = 1;
 	(void)argc;
 	(void)argv;
-	environ = strdd_cpy(envp);
 	while (status != 0)
 	{
+		environ = strdd_cpy(envp);
 		write(1, "$> ", 3);
 		line = shell_read();
 		args = shell_split(line);
