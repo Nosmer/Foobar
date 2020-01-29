@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:13:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:32:20 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:37:38 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int			shell_exec(char **args, char **environ)
 	pid = fork();
 	if (pid == 0)
 	{
-		check_avail(args[0]);
 		if (execve(args[0], args, environ) == -1)
 			ft_putstr_fd("minishell", 2);
 		exit(EXIT_FAILURE);

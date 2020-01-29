@@ -6,7 +6,7 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:23:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/29 13:39:46 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:45:31 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_reallocate(char **tokens, int bufsize);
 char	**strdd_cpy(char **source);
 void	strdd_free(char **source);
 int		ms_args_check(char **args, char **environ);
-char	*ms_get_tilde(char **environ, char *str);
-char	*ms_get_param(char **environ, char *str);
+char	*ms_get_tilde(char *str, char **environ);
+char	*ms_get_param(char *str, char **environ);
 
 #endif
