@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_get_param.c                                     :+:      :+:    :+:   */
+/*   ms_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 12:48:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/02/03 12:33:07 by bconsuel         ###   ########.fr       */
+/*   Created: 2020/02/03 13:47:14 by bconsuel          #+#    #+#             */
+/*   Updated: 2020/02/03 13:52:35 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int		main(int argc, char **argv, char **envp)
+void	proc_signal_handler(int	signo)
 {
-	char	line[50] = "FooBar${HOME}FooBar $PWD FooBar";
-	char	**words;
-
-	words = get_words(line);
-	while (*words)
+	if (signo == SIGINT)
 	{
-		printf("%s\n", *words);
-		words++;
+		write(1, "\n", 1);
+		signal(SIGINT, proc_signal_handler);
 	}
-	return (0);
+}
+
+void	signal_handler(int signo)
+{
+	if (signo == SIGINT)
+	{
+		write(1, "\n", 1);
+		write(1, "$> ", 3);
+		signal(SIGINT, signal_handler);
+	}
 }

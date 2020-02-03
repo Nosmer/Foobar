@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_get_param.c                                     :+:      :+:    :+:   */
+/*   strdd_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 12:48:55 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/02/03 12:33:07 by bconsuel         ###   ########.fr       */
+/*   Created: 2020/02/03 15:04:42 by bconsuel          #+#    #+#             */
+/*   Updated: 2020/02/03 15:08:32 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		main(int argc, char **argv, char **envp)
+void	strdd_print(char **source)
 {
-	char	line[50] = "FooBar${HOME}FooBar $PWD FooBar";
-	char	**words;
-
-	words = get_words(line);
-	while (*words)
+	while (*source)
 	{
-		printf("%s\n", *words);
-		words++;
+		ft_putendl(*source);
+		source++;
 	}
-	return (0);
 }

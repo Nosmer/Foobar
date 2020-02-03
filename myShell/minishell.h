@@ -6,13 +6,14 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:23:07 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/31 15:38:56 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/02/03 15:22:37 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include "./lib/libft.h"
+# include <signal.h>
 # include <sys/wait.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -32,9 +33,12 @@ int		shell_run(char **args, char **environ);
 char	*get_token(char *s, const char *delim);
 void	ft_reallocate(char **tokens, int bufsize);
 char	**strdd_cpy(char **source);
+void	strdd_print(char **source);
 void	strdd_free(char **source);
-int		ms_args_check(char **args, char **environ);
 char	*ms_get_tilde(char *str, char **environ);
 char	*ms_get_param(char *str, char **environ);
+char	*ms_make_path(char *s1, char *s2);
+void	signal_handler(int signo);
+void	proc_signal_handler(int signo);
 
 #endif

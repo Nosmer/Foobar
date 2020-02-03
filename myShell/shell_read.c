@@ -6,11 +6,26 @@
 /*   By: bconsuel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:06:10 by bconsuel          #+#    #+#             */
-/*   Updated: 2020/01/14 16:30:47 by bconsuel         ###   ########.fr       */
+/*   Updated: 2020/02/03 17:25:17 by bconsuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void		check_input(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '$')
+		{
+
+		}
+		i++;
+	}
+}
 
 /*
 ** Reads user input (STDIN_FILENO) and returns a resulting string.
@@ -42,6 +57,7 @@ char		*shell_read(void)
 		if (pos >= bufsize)
 			ft_reallocate(&buf, bufsize);
 	}
+	check_input(buf);
 	return (buf);
 }
 
